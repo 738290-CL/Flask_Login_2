@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <form method="POST" >
+    {{form.csrf_token }}
+    {% with messages = get_flashed_messages()%}
+    {% if messages%}
+    {% for message in messages%}
+    <p>{{message}}</p>
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+    <h1>Log In:</h1>
+    <p>
+      {{ form.email.label }}
+      {{ form.email() }} <br />
+      {{ form.password.label }}
+      {{ form.password() }} <br />
+    </p>
+    <p>
+      <input type="submit" value="Add">
+    </p>
+  </form>
+
+{% endblock %}
